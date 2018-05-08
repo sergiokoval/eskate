@@ -19,14 +19,16 @@ void loop() {
   clientHeartbeatMessageId++;    
   delay(10);
   radio.startListening();
-  while (!radio.available()); 
-  char text[32] = "";
-  radio.read(&text, sizeof(text));
-  Serial.println(text);
   
-  delay(10);
+  if (radio.available()){ 
+    char text[32] = "";
+    radio.read(&text, sizeof(text));
+    Serial.println(text);
+  }
+  delay(5);
   radio.stopListening();
   char sometext[32]; 
   sprintf(sometext,"client heartbeat, %d",clientHeartbeatMessageId) ;
   radio.write(&sometext, sizeof(sometext));  
+  delay(500);
 }

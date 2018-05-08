@@ -29,11 +29,11 @@ void loop() {
 
   delay(5);
   radio.startListening();  
-  if(radio.available()){
+  while(!radio.available());
   char text2[50]; 
   radio.read(&text2, sizeof(text2));
   Serial.print("client data - ");
   Serial.println(text2);
-  }
+  
   delay(500);
 }
