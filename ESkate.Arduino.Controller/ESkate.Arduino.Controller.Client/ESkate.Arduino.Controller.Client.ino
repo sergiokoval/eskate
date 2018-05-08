@@ -1,19 +1,10 @@
-/*
-* Arduino Wireless Communication Tutorial
-*       Example 1 - Receiver Code
-*                
-* by Dejan Nedelkovski, www.HowToMechatronics.com
-* 
-* Library: TMRh20/RF24, https://github.com/tmrh20/RF24/
-*/
-
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>
 
 RF24 radio(9, 10); // CE, CSN
 
-const byte addresses[][6] ={ "00001", "00002"};
+const byte addresses[][6] ={ "00001", "00002" };
 int clientHeartbeatMessageId = 0;
 
 void setup() {
@@ -21,8 +12,7 @@ void setup() {
   radio.begin();
   radio.openReadingPipe(1, addresses[1]);
   radio.openWritingPipe(addresses[0]);
-  radio.setPALevel(RF24_PA_MIN);
-  //radio.startListening();
+  radio.setPALevel(RF24_PA_MIN);  
 }
 
 void loop() {
