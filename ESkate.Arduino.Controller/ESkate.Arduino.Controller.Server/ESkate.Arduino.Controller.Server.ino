@@ -9,6 +9,8 @@ RF24 radio(9, 10); // CE, CSN
 const byte addresses[][6] = { "00001", "00002" };
 
 void setup() {
+  DDRB |= (1 << 1);
+  
   Serial.begin(9600);
   radio.begin();
   radio.openWritingPipe(addresses[1]);
@@ -35,5 +37,5 @@ void loop() {
   Serial.print("client data - ");
   Serial.println(text2);
   
-  delay(500);
+  delay(10);
 }
